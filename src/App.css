@@ -1,0 +1,542 @@
+/* ------------------ NavBar.js Styles ------------------ */
+
+.navItem {
+  color: white !important;
+}
+
+.navItem:hover {
+  color: cyan !important;
+}
+
+/* ----------------- Qna.js Styles ---------------- */
+
+#qsContainer {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+}
+#qsHeading {
+  color: gray;
+}
+#questionContainer {
+  display: grid;
+  grid-gap: 10px;
+  padding: 20px;
+}
+#searchContainer {
+  justify-items: center;
+  margin-right: 10px;
+}
+#loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70vh;
+  margin-right: 200px;
+}
+#initialLoading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+}
+
+/* ----------------- Question.js Styles ----------------- */
+
+#question {
+  border-radius: 10px !important;
+  transition: box-shadow 0.2s;
+}
+#question:hover {
+  box-shadow: 3px 3px 8px -2px;
+  cursor: default;
+}
+.questionBody {
+  margin: 0 !important;
+  padding: 10px 10px 0 20px !important;
+}
+#questionHeading {
+  display: flex !important;
+}
+#questionProfile {
+  margin-right: 10px;
+}
+#questionProfileImage {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* ------------------ Search.js Styles ------------------ */
+
+#searchBox {
+  margin-bottom: 5px;
+}
+#postQueryButton {
+  position: fixed;
+  bottom: 3%;
+  right: 3%;
+  box-shadow: 2px 2px 2px black;
+  transition: transform 300ms, box-shadow 300ms;
+}
+#postQueryButton:hover {
+  box-shadow: 3px 3px 3px black;
+  transform: scale(1.1);
+}
+#postQueryButton:active {
+  box-shadow: 1px 1px 1px black !important;
+  transform: translateY(4px);
+}
+
+/* ----------------- NoResults.js Styles ---------------- */
+
+#noResultsContainer {
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  color: #ff0000;
+}
+#noResultsImage {
+  width: 50%;
+}
+
+/* ----------------- PostQuery.js Styles ---------------- */
+
+#postContainer {
+  display: grid;
+  background-color: #353941;
+  color: white;
+  width: 55vw;
+  margin: 2rem auto;
+  padding: 20px;
+  min-height: 90vh;
+  box-shadow: 1px 1px 5px black;
+}
+#postQueryHeading {
+  color: #16c79a;
+  margin-bottom: 10px;
+  text-align: center;
+  text-shadow: 3px 3px 3px black;
+}
+.postQueryLabel {
+  color: #d89216;
+  margin-bottom: 7px;
+  font-weight: bold;
+  font-variant-caps: all-petite-caps;
+}
+#submitQueryButton {
+  background-color: #16c79a !important;
+  color: black !important;
+  font-weight: bold !important;
+  box-shadow: 2px 2px 2px black;
+  transition: transform 300ms, box-shadow 300ms !important;
+}
+#submitQueryButton:hover {
+  color: white !important;
+  box-shadow: 3px 3px 3px black;
+  transform: scale(1.1);
+}
+#submitQueryButton:active {
+  box-shadow: 1px 1px 1px black !important;
+  transform: translateY(4px);
+}
+#imageContainer {
+  background-color: rgba(22, 199, 154);
+  border-radius: 10px;
+  margin: 10px 0 0 0;
+  padding: 20px 10px 20px 10px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  row-gap: 20px;
+  column-gap: 10px;
+  justify-items: center;
+}
+.imageCard {
+  background-color: white;
+  box-shadow: 3px 3px 5px -1px black;
+  border-radius: 9px;
+  padding: 10px;
+  text-align: center;
+}
+.inputImage {
+  width: 8em;
+  height: 8em;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+.inputImage:hover {
+  transition: transform 300ms;
+  transform: scale(2.5);
+}
+#imageDeleteButton {
+  color: black;
+}
+#imageDeleteButton:hover {
+  color: red;
+  cursor: pointer;
+}
+
+/* ------------------ Channels Styles ------------------ */
+#channelsPart {
+  margin: 10px;
+  padding: 10px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+}
+#channelsHeading {
+  margin: 10px;
+  color: gray;
+  grid-column: span 2;
+  text-align: center;
+}
+#channelsImagePart {
+  width: 100%;
+  text-align: end;
+}
+#channelsImage {
+  width: 60%;
+}
+#channelsContentPart {
+  padding: 10px;
+  width: fit-content;
+  background-color: #29bb89;
+  border-radius: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  box-shadow: 4px 4px 10px -2px black;
+}
+
+#channelsChip {
+  width: 12rem;
+  padding: 5px;
+}
+
+/* ------------------ MostLikedPosts.js Styles ------------------ */
+
+#mostLikedPostsHeading {
+  margin: 30px;
+  color: gray;
+  text-align: center;
+}
+
+#mostLikedPostsSwiper {
+  height: 80vh !important;
+  width: 90vw !important;
+  padding: 30px !important;
+  border-radius: 10px;
+  box-shadow: 2px 2px 8px -2px grey;
+}
+
+#mostLikedPostsSwiperSlide {
+  text-align: center;
+  font-size: 18px;
+  width: fit-content !important;
+  height: fit-content !important;
+
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+
+#mostLikedPostsSwiper div .swiper-pagination-bullet {
+  width: 20px !important;
+  height: 20px !important;
+  text-align: center !important;
+  line-height: 20px !important;
+  font-size: 12px !important;
+  color: black !important;
+  opacity: 1 !important;
+  background: rgba(0, 0, 0, 0.2) !important;
+}
+
+#mostLikedPostsSwiper div .swiper-pagination-bullet-active {
+  color: white !important;
+  background: #007aff !important;
+}
+
+/* ------------------ MostCommentedPosts.js Styles ------------------ */
+
+#mostCommentedPostsHeading {
+  margin: 30px;
+  color: gray;
+  text-align: center;
+}
+
+#mostCommentedPostsSwiper {
+  height: 80vh !important;
+  width: 90vw !important;
+  padding: 30px !important;
+  border-radius: 10px;
+  box-shadow: 2px 2px 8px -2px grey;
+}
+
+#mostCommentedPostsSwiperSlide {
+  text-align: center;
+  font-size: 18px;
+  width: fit-content !important;
+  height: fit-content !important;
+
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+
+#mostCommentedPostsSwiper div .swiper-pagination-bullet {
+  width: 20px !important;
+  height: 20px !important;
+  text-align: center !important;
+  line-height: 20px !important;
+  font-size: 12px !important;
+  color: black !important;
+  opacity: 1 !important;
+  background: rgba(0, 0, 0, 0.2) !important;
+}
+
+#mostCommentedPostsSwiper div .swiper-pagination-bullet-active {
+  color: white !important;
+  background: #007aff !important;
+}
+
+/* ------------------ MostAnsweredQuery.js Styles ------------------ */
+
+#mostAnsweredQueryHeading {
+  margin: 30px;
+  color: gray;
+  text-align: center;
+}
+
+#mostAnsweredQuerySwiper {
+  height: 50vh !important;
+  width: 90vw !important;
+  padding: 20px 50px !important;
+  border-radius: 10px;
+  box-shadow: 2px 2px 8px -2px grey;
+  margin-bottom: 30px;
+}
+
+#mostAnsweredQuerySwiperSlide {
+  font-size: 18px;
+  background: #fff;
+
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+
+#mostAnsweredQuerySwiper div .swiper-pagination-bullet {
+  width: 20px !important;
+  height: 20px !important;
+  text-align: center !important;
+  line-height: 20px !important;
+  font-size: 12px !important;
+  color: black !important;
+  opacity: 1 !important;
+  background: rgba(0, 0, 0, 0.2) !important;
+}
+
+#mostAnsweredQuerySwiper div .swiper-pagination-bullet-active {
+  color: white !important;
+  background: #007aff !important;
+}
+
+/* ------------------ Mobile-Version Styles ------------------ */
+
+@media only screen and (max-width: 900px) {
+  #qsContainer {
+    grid-template-columns: 4fr;
+  }
+  #qsHeading {
+    text-align: center;
+  }
+  #questionContainer {
+    order: 1;
+  }
+  #searchContainer {
+    position: sticky;
+    top: 0;
+    padding: 0;
+    margin: 0 3px 0 3px;
+  }
+  #postContainer {
+    width: 80vw;
+  }
+  #searchBox {
+    margin-bottom: 2px;
+  }
+  #channelsPart {
+    grid-template-columns: 2fr;
+    justify-items: center;
+  }
+  #channelsImagePart {
+    grid-column: span 2;
+    text-align: center;
+  }
+  #channelsImage {
+    width: 80%;
+  }
+  #channelsChip {
+    width: 35vw;
+  }
+  #mostLikedPostsSwiper {
+    height: 85vh !important;
+  }
+  #mostAnsweredQueryHeading,
+  #mostCommentedPostsHeading,
+  #mostLikedPostsHeading,
+  #channelsHeading {
+    font-size: 2rem;
+  }
+  #mostAnsweredQuerySwiper {
+    padding: 5px 10px !important;
+    height: 75vh !important;
+  }
+  #loading {
+    height: 60vh;
+    margin-right: 0;
+  }
+  #imageContainer {
+    grid-template-columns: 1fr 1fr;
+  }
+  #summaryContent,
+  .docContent {
+    grid-template-columns: 4fr !important;
+  }
+  #summaryContent h3,
+  .docContent h3 {
+    text-align: center;
+  }
+}
+
+@media only screen and (min-width: 901px) {
+  #filterPart {
+    position: sticky;
+    top: 0;
+    right: 0;
+    padding: 5px;
+  }
+}
+
+@media only screen and (min-width: 901px) and (max-width: 1250px) {
+  #imageContainer {
+    grid-template-columns: 1fr 1fr;
+  }
+  #mostLikedPostsSwiper {
+    height: 85vh !important;
+  }
+}
+
+#summaryContainer {
+  /* margin: 10px 50px; */
+  /* border-radius: 20px; */
+  padding: 20px 50px 40px 0;
+  /* box-shadow: 2px 2px 10px gray; */
+}
+#summaryContainer h1 {
+  text-align: center;
+  color: #16c79a;
+  margin: 10px 0 10px 0;
+}
+#summaryContainer img {
+  width: 250px;
+  height: 250px;
+  border-radius: 20px;
+  box-shadow: 2px 2px 10px;
+}
+#summaryContent {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  justify-items: center;
+  align-items: center;
+  text-align: justify;
+  color: black;
+}
+#summaryContent p {
+  color: black;
+  font-size: medium;
+  font-weight: 500;
+}
+
+#docContainer {
+  margin: 10px 50px;
+  border-radius: 20px;
+  padding: 20px 50px 20px 0;
+  box-shadow: 2px 2px 10px gray;
+}
+#docContainer h1 {
+  margin: 10px 0 30px 0;
+  color: #16c79a;
+  text-align: center;
+}
+.docContent {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  justify-items: center;
+  align-items: center;
+  text-align: justify;
+  margin: 10px;
+}
+.docContent p {
+  color: black;
+  font-size: medium;
+  font-weight: 500;
+}
+.docContent h5 {
+  color: crimson;
+  background-color: gainsboro;
+  padding: 10px 20px;
+  width: max-content;
+  border-radius: 10px;
+  /* text-align: center; */
+}
+.docContent img {
+  width: 160px;
+  height: 160px;
+  border-radius: 10px;
+}
+
+/* Yashwanth Styles */
+.avatar {
+  animation: popout 0.3s ease;
+}
+.avatar .backdrop {
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+.avatar:hover .backdrop {
+  opacity: 0.5;
+}
+
+@keyframes popout {
+  from {
+    transform: scale(0);
+  }
+}

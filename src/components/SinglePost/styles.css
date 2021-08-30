@@ -1,0 +1,153 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* body {
+  background: radial-gradient(#e5e5e5, #ffff, #e5e5e5);
+} */
+
+/* Post */
+
+.container-style {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  border: solid 1px black;
+  box-shadow: 5px 10px 20px 1px rgba(0, 0, 0, 0.253);
+  padding-top: 20px;
+  width: max-content;
+}
+
+@media (max-width: 770px) {
+  .carousel-media {
+    width: 400px;
+  }
+}
+/* PostRight */
+
+.right-icons {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 35px;
+  margin-bottom: 30px;
+}
+
+/* Post */
+
+.my-container {
+  margin-top: 200px !important;
+}
+/* PostLeft */
+
+.user {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.spinner-class {
+  width: 400px;
+  height: 400px;
+}
+
+#user_img {
+  height: 65px;
+  width: 65px;
+  margin: 10px;
+  border-radius: 50%;
+}
+.user_name {
+  padding: 5px;
+  margin-top: 5px;
+}
+.user_branch {
+  padding-bottom: 5px;
+  margin-left: 5px;
+}
+.user_details {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-start;
+}
+.postdetails {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.postdetails h3 {
+  font-family: cursive;
+  font-weight: 600;
+  width: 650px;
+}
+.post_image img {
+  margin: 5px;
+  margin-bottom: 10px;
+  padding: 5px;
+  width: 35vw;
+}
+.post_content {
+  margin: 10px;
+  padding: 10px;
+  text-align: justify;
+  text-indent: 50px;
+}
+
+/* Model  */
+.model-img {
+  height: 400px;
+}
+/* HandleComment */
+
+.comment-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.commentBox {
+  margin-top: 10px;
+  padding-top: 10px;
+  width: 420px;
+  height: 450px;
+  color: white;
+  background-color: gray;
+  border: 1px solid black;
+  border-top-left-radius: 20px;
+  border-style: outset;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+
+#reply:hover {
+  font-weight: 600;
+  cursor: pointer;
+}
+.commentBox .btn {
+  margin-top: 10px;
+  padding: 10px;
+  font-size: 20px;
+}
+
+.card-shadow {
+  box-shadow: 0 1px 4px rgb(0 0 0 / 10%);
+}
+
+.input-container {
+  margin-top: 5px;
+  margin-bottom: 20px;
+}
+
+.inp {
+  height: 2.6em;
+  width: 380px;
+  padding-left: 10px;
+  margin-bottom: 20px;
+}
+.btn-arrow {
+  background-color: none;
+  border: none;
+  margin-left: 3px;
+}

@@ -1,0 +1,55 @@
+[
+    {
+        "id":1,
+        "name": "Naveen Anagandula",
+        "branch":"CSE",
+        "query":"Lorem ipsum dolor sit, amet consectetur adipisicing elit. At, esse officiis fugiat necessitatibus quaerat earum, tempora deserunt nisi assumenda quo voluptate fugit, doloribus ipsum a neque voluptatibus.",
+        "description":"Lorem ipsum dolor sit, amet consectetur adipisicing elit. At, esse officiis fugiat necessitatibus quaerat earum, tempora deserunt nisi assumenda quo voluptate fugit, doloribus ipsum a neque voluptatibus consequuntur iure magni beatae corporis nemo incidunt. Nam enim, ab officiis odio porro voluptatem voluptatum, sint necessitatibus saepe unde minus. Commodi, rerum nostrum.",
+        "imageUrl":"Images/naruto.jpg",
+        "category":"programming"
+    },
+    {
+        "id":2,
+        "name": "Anonymous",
+        "branch":"Anonymous",
+        "query":"Lorem ipsum dolor sit, amet consectetur adipisicing elit. At, esse officiis fugiat necessitatibus quaerat earum, tempora deserunt nisi assumenda quo voluptate fugit, doloribus ipsum a neque voluptatibus.",
+        "description":"Lorem ipsum dolor sit, amet consectetur adipisicing elit. At, esse officiis fugiat necessitatibus quaerat earum, tempora deserunt nisi assumenda quo voluptate fugit, doloribus ipsum a neque voluptatibus consequuntur iure magni beatae corporis nemo incidunt. Nam enim, ab officiis odio porro voluptatem voluptatum, sint necessitatibus saepe unde minus. Commodi, rerum nostrum.",
+        "imageUrl":"",
+        "category":"web development"
+    },
+    {
+        "id":3,
+        "name": "Navan Bairisetty",
+        "branch":"ECE",
+        "query":"Lorem ipsum dolor sit, amet consectetur adipisicing elit. At, esse officiis fugiat necessitatibus quaerat earum, tempora deserunt nisi assumenda quo voluptate fugit, doloribus ipsum a neque voluptatibus.",
+        "description":"Lorem ipsum dolor sit, amet consectetur adipisicing elit. At, esse officiis fugiat necessitatibus quaerat earum, tempora deserunt nisi assumenda quo voluptate fugit, doloribus ipsum a neque voluptatibus consequuntur iure magni beatae corporis nemo incidunt. Nam enim, ab officiis odio porro voluptatem voluptatum, sint necessitatibus saepe unde minus. Commodi, rerum nostrum.",
+        "imageUrl":"Images/kakashi.jpg",
+        "category":"machine learning"
+    },
+    {
+        "id":4,
+        "name": "Yashwanth Reddy Kotla",
+        "branch":"MECH",
+        "description":"Lorem ipsum dolor sit, amet consectetur adipisicing elit. At, esse officiis fugiat necessitatibus quaerat earum, tempora deserunt nisi assumenda quo voluptate fugit, doloribus ipsum a neque voluptatibus consequuntur iure magni beatae corporis nemo incidunt. Nam enim, ab officiis odio porro voluptatem voluptatum, sint necessitatibus saepe unde minus. Commodi, rerum nostrum.",
+        "imageUrl":"Images/choji.jpeg",
+        "category":"web development"
+    },
+    {
+        "id":5,
+        "name": "Abhinav Uppu",
+        "branch":"IT",
+        "query":"Lorem ipsum dolor sit, amet consectetur adipisicing elit. At, esse officiis fugiat necessitatibus quaerat earum, tempora deserunt nisi assumenda quo voluptate fugit, doloribus ipsum a neque voluptatibus.",
+        "description":"Lorem ipsum dolor sit, amet consectetur adipisicing elit. At, esse officiis fugiat necessitatibus quaerat earum, tempora deserunt nisi assumenda quo voluptate fugit, doloribus ipsum a neque voluptatibus consequuntur iure magni beatae corporis nemo incidunt. Nam enim, ab officiis odio porro voluptatem voluptatum, sint necessitatibus saepe unde minus. Commodi, rerum nostrum.",
+        "imageUrl":"Images/sai.jpg",
+        "category":"cse"
+    },
+    {
+        "id":6,
+        "name": "Anonymous",
+        "branch":"Anonymous",
+        "query":"Lorem ipsum dolor sit, amet consectetur adipisicing elit. At, esse officiis fugiat necessitatibus quaerat earum, tempora deserunt nisi assumenda quo voluptate fugit, doloribus ipsum a neque voluptatibus.",
+        "description":"Lorem ipsum dolor sit, amet consectetur adipisicing elit. At, esse officiis fugiat necessitatibus quaerat earum, tempora deserunt nisi assumenda quo voluptate fugit, doloribus ipsum a neque voluptatibus consequuntur iure magni beatae corporis nemo incidunt. Nam enim, ab officiis odio porro voluptatem voluptatum, sint necessitatibus saepe unde minus. Commodi, rerum nostrum.",
+        "imageUrl":"",
+        "category":"programming"
+    }
+]
