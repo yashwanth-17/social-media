@@ -1,116 +1,120 @@
 /* css for answer component */
 /* css for displaying the details of user who posted the answer */
+.qna-cont {
+  padding: 20px;
+}
 .answeredby-information {
-	display: flex;
-	align-items: center;
+  display: flex;
+  align-items: center;
 }
 .answeredby-information-details {
-	display: flex;
+  display: flex;
 }
 /* css for body of answer */
 .answer-body {
-	display: flex;
-	align-items: flex-start;
+  display: flex;
+  align-items: flex-start;
 }
 .Vote {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .not {
-	display: none;
+  display: none;
 }
 .ans-count {
-	font-weight: normal;
+  font-weight: normal;
 }
 .answer-content {
-	margin-top: 15px;
-	padding: 0 10px 10px 10px;
+  margin-top: 15px;
+  padding: 0 10px 10px 10px;
 }
 /* css for question component */
 /* css for displaying the entire single qna as flex with three parts */
 .question {
-	display: flex;
-	flex-wrap: wrap;
+  display: flex;
+  flex-wrap: wrap;
 }
 .back {
-	flex: 0.2;
-	cursor: pointer;
-
-	height: fit-content;
-	padding: 5px;
+  flex: 0.2;
+  cursor: pointer;
+  height: fit-content;
+  padding: 5px;
 }
 .back-content {
-	display: flex;
-	align-items: center;
-	column-gap: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 10px;
+}
+.alsf {
+  align-self: center;
+  font-size: medium;
+  margin-top: 12px;
 }
 
 .middle {
-	flex: 0.5;
+  flex: 0.5;
 }
 /* css for individual components and elements starts here */
 
 /* used to display the related fields  */
 .Chip {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
-	margin: 2px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 2px;
 }
 /* displaying the information regarding particular question */
 .question-information {
-	display: flex;
-	align-content: center;
+  display: flex;
+  align-content: center;
 }
 .information-details {
-	display: flex;
-	/* background-color: red; */
-	justify-content: center;
-	align-items: center;
-	font-size: large;
-	margin-left: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: large;
+  margin-left: 5px;
 }
 
 /* css for the answer button */
 .answerbutton {
-	background-color: white;
-	border: none;
-	display: flex;
-	border-radius: 25px;
-	align-items: center;
-	cursor: pointer;
+  background-color: white;
+  border: none;
+  display: flex;
+  border-radius: 25px;
+  align-items: center;
+  cursor: pointer;
 }
 .answerbutton:hover {
-	background-color: lightblue;
+  background-color: lightblue;
 }
 /* css for answer form visibility */
 .not {
-	display: none;
+  display: none;
 }
 
 .show {
-	display: block;
+  display: block;
 }
 /* css for displaying elements in flex spacebetween */
 .spacebetween {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 /* css for sidebar back button */
 .Sidebar {
-	display: flex;
-
-	cursor: pointer;
-
-	flex: 0.3;
-	position: sticky;
-	margin-top: 0;
+  display: flex;
+  cursor: pointer;
+  flex: 0.3;
+  position: sticky;
+  margin-top: 0;
 }
 
 .Sidebar > h3 {
-	font-weight: 800;
-
-	font-size: 20px;
+  font-weight: bold;
+  font-size: 20px;
 }

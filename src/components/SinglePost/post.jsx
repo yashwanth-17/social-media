@@ -4,9 +4,8 @@ import PostRight from "./PostRight";
 import Spinner from "react-bootstrap/Spinner";
 import { Container, Row, Col } from "react-bootstrap";
 import { BiArrowBack } from "react-icons/bi";
-import "bootstrap/dist/css/bootstrap.min.css";
 import { useHistory, useParams } from "react-router-dom";
-import "./styles.css";
+import './styles.css'
 
 function Post() {
   const history = useHistory();
@@ -15,7 +14,7 @@ function Post() {
     history.goBack();
   }
   return (
-    <div>
+    <div id="singlePostPage">
       <Container className="container-style">
         <Row>
           <Col lg={1} md={1} sm={1}>

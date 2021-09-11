@@ -33,7 +33,6 @@ function PostLeft({ id }) {
       });
 
     return () => {
-      console.log("Clean up");
       return unsubscribe;
     };
   }, []);
@@ -51,7 +50,7 @@ function PostLeft({ id }) {
   function carouselCall() {
     return (
       <div className="carousel-media">
-        <Carousel>
+        <Carousel style={{ width: "100%" }}>
           {imgToStringArray.map((image) => {
             return (
               <Carousel.Item interval={3500}>
@@ -72,17 +71,13 @@ function PostLeft({ id }) {
   }
 
   const customSpinner = {
-    marginTop: "250px",
-    marginLeft: "210px",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
   };
   return userDetails.name === undefined ? (
-    <div className="spinner-class">
-      <Spinner
-        animation="border"
-        role="status"
-        variant="secondary"
-        style={customSpinner}
-      />
+    <div className="spinner-class" style={customSpinner}>
+      <Spinner animation="border" role="status" variant="secondary" />
       <span className="visually-hidden"> &nbsp; Loading... </span>
     </div>
   ) : (
@@ -91,17 +86,15 @@ function PostLeft({ id }) {
         <div className="user_photo">
           <img
             id="user_img"
-            src={userDetails.imageUrl ? userDetails.imageUrl : null}
+            src={userDetails.imgUrl ? userDetails.imgUrl : null}
             alt="UserImage"
           />
         </div>
-        <div className="user_details">
-          <div className="user_name">
-            <h5>{userDetails.name}</h5>
-          </div>
-          <div className="user_branch">
-            <p>{userDetails.branch ? `${userDetails.branch} Student` : null}</p>
-          </div>
+        <div className="user_details bg-muted">
+          <p className="user_name">{userDetails.name}</p>
+          <p className="user_branch">
+            {userDetails.branch ? `${userDetails.branch} Student` : null}
+          </p>
         </div>
       </div>
       <div className="postdetails">
@@ -109,9 +102,11 @@ function PostLeft({ id }) {
           imgToStringArray.length > 1 ? (
             carouselCall()
           ) : (
-            <div className="post_image">
-              <img src={imgToStringArray[0]} alt="Post_Image" />
-            </div>
+            <img
+              src={imgToStringArray[0]}
+              alt="Post_Image"
+              className="post_image"
+            />
           )
         ) : null}
         <h3>{postDetails.title}</h3>

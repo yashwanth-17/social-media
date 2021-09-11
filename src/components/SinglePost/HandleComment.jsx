@@ -34,13 +34,6 @@ function CommentBox(props) {
     setCurrentUser(user);
     setComment("Replying to @" + user + " ");
   }
-  const custom = {
-    backgroundColor: "#EFF3F3",
-    color: "black",
-    margin: "10px",
-    paddingLeft: "7px",
-    paddingTop: "4px",
-  };
   const customPara = {
     padding: "0px",
     marginTop: "0px",
@@ -48,10 +41,10 @@ function CommentBox(props) {
   };
   function test(item) {
     return (
-      <Card style={custom} className="card-shadow">
-        <h6>{item.uname}</h6>
+      <Card className="card-shadow comment-card" key={item.id}>
+        <h6>{item.name}</h6>
         <p style={customPara}>{item.comment}</p>
-        <Reply user={item.uname} fn={handleClick} />
+        <Reply user={item.name} fn={handleClick} />
       </Card>
     );
   }
@@ -59,7 +52,7 @@ function CommentBox(props) {
   return (
     <div className="comment-container">
       <div>
-        <Card className="commentBox">{props.items.map(test)}</Card>
+        <div id="commentBox">{props.items.map(test)}</div>
         <div className="input-container">
           <InputGroup>
             <FormControl

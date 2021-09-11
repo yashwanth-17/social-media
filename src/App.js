@@ -21,6 +21,8 @@ import SyncLoader from "react-spinners/SyncLoader";
 import Post from "./components/SinglePost/post";
 import AddDetails from "./components/AddDetails";
 import SingleQna from "./components/singleqna/qna";
+import { loadTheme } from "./functions/theme";
+import NewPost from "./components/NewPost";
 
 function App() {
   const [user, setUser] = useState(auth.currentUser);
@@ -36,6 +38,7 @@ function App() {
 
   useEffect(() => {
     setLoading(true);
+    loadTheme();
     setTimeout(() => {
       setLoading(false);
     }, 3000);
@@ -57,6 +60,7 @@ function App() {
               <Route path="/profile" exact component={Profile} />
               <Route path="/settings" exact component={Settings} />
               <Route path="/postquery" exact component={PostQuery} />
+              <Route path="/new-post" exact component={NewPost} />
               <Route path="/changePassword" exact component={ChangePassword} />
               <Route path="/post/:id" exact component={Post} />
               <Route path="/qna/:id" exact component={SingleQna} />

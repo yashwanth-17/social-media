@@ -11,7 +11,7 @@ export default function AddDetails() {
   const bioRef = useRef();
   const [imgUrl, setImgUrl] = useState(null);
   const [interests, setInterests] = useState([]);
-  const [groups, setGroups] = useState([]);
+  const [channels, setChannels] = useState([]);
   const history = useHistory();
   function addDetailsToUser() {
     const name = nameRef.current.value;
@@ -24,22 +24,22 @@ export default function AddDetails() {
       branch,
       bio,
       interests,
-      groups,
+      channels,
       imgUrl,
     });
     db.collection("users")
       .doc(auth.currentUser.uid)
-      .update({
+      .set({
         name,
         rollno,
         bio,
         branch,
         interests,
-        groups,
+        channels,
         imgUrl,
       })
       .then(() => {
-        history.replace("/");
+        history.goBack();
       });
   }
   function handleImageInput(e) {
@@ -60,8 +60,8 @@ export default function AddDetails() {
       });
   }
   function handleGroups(e) {
-    if (!groups.includes(e.target.value))
-      setGroups((p) => {
+    if (!channels.includes(e.target.value))
+      setChannels((p) => {
         return [...p, e.target.value];
       });
   }
@@ -151,12 +151,12 @@ export default function AddDetails() {
         <Form.Group>
           <Form.Label>Groups</Form.Label>
           <div>
-            {groups.map((_) => (
+            {channels.map((_) => (
               <Badge key={_} variant="dark" pill className="m-1">
                 <p className="m-0 p-1">
                   {_ + " "}
                   <span
-                    onClick={() => setGroups(groups.filter((i) => i !== _))}
+                    onClick={() => setChannels(channels.filter((i) => i !== _))}
                   >
                     ×
                   </span>

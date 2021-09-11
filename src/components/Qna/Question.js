@@ -16,12 +16,12 @@ function Question({ user }) {
         <Card.Header className="questionBody">
           <div id="questionHeading">
             <div id="questionProfile">
-              {user.imageUrl === "" ? (
+              {user.imgUrl === "" ? (
                 <FontAwesomeIcon icon={faUserTie} size="3x" />
               ) : (
                 <img
                   id="questionProfileImage"
-                  src={user.imageUrl}
+                  src={user.imgUrl}
                   alt="Profile"
                 ></img>
               )}
@@ -36,11 +36,11 @@ function Question({ user }) {
             </div>
           </div>
         </Card.Header>
-        <Card.Body className="questionBody">
+        <Card.Body className="questionBody mb-2">
           <Card.Text className="text-justify mr-2">{user.query}</Card.Text>
-          <Button variant="danger" className="mb-2">
-            <Link to={"/qna/" + user.id}>Read More</Link>
-          </Button>
+          <Link className="qna-link" to={"/qna/" + user.id}>
+            view this query
+          </Link>
         </Card.Body>
       </Card>
     </>

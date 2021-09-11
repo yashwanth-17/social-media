@@ -1,3 +1,5 @@
+/* ---------- GLOBAL THEME VARIABLES ---------------- */
+
 /* ------------------ NavBar.js Styles ------------------ */
 
 .navItem {
@@ -5,7 +7,7 @@
 }
 
 .navItem:hover {
-  color: cyan !important;
+  color: dodgerblue !important;
 }
 
 /* ----------------- Qna.js Styles ---------------- */
@@ -178,8 +180,7 @@
 
 /* ------------------ Channels Styles ------------------ */
 #channelsPart {
-  margin: 10px;
-  padding: 10px;
+  padding: 20px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: center;
@@ -522,8 +523,53 @@
   height: 160px;
   border-radius: 10px;
 }
+/********************************************************/
 
 /* Yashwanth Styles */
+.posts-list {
+  position: absolute;
+  margin-inline: 20px;
+  left: 10vw;
+  width: 48vw;
+}
+.post-title {
+  color: grey;
+  font-size: 14px;
+  font-weight: bold;
+  margin-top: 20px;
+  margin-left: 10px;
+}
+.filters {
+  position: fixed;
+  left: 70vw;
+  width: 25vw;
+}
+.filters-title {
+  color: grey;
+  font-size: 14px;
+  font-weight: bold;
+  margin-top: 20px;
+  margin-left: 10px;
+}
+.profile {
+  display: flex;
+  padding-top: 48px;
+  justify-content: center;
+  padding-left: 2em;
+}
+.profile .box {
+  width: 30vw;
+}
+.profile-card {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 1px 1px 3px grey;
+  padding: 10px;
+  border-radius: 10px;
+  margin-inline: 3em;
+}
 .avatar {
   animation: popout 0.3s ease;
 }
@@ -534,9 +580,134 @@
 .avatar:hover .backdrop {
   opacity: 0.5;
 }
+#tile {
+  width: 80%;
+  background-color: #f5f5f5;
+  border-radius: 5px;
+}
+.info {
+  margin-left: 2em;
+}
+.info-box {
+  max-width: 70%;
+}
+.pointer {
+  cursor: pointer;
+}
 
 @keyframes popout {
   from {
     transform: scale(0);
   }
 }
+
+@media (max-width: 900px) {
+  #posts-box {
+    width: 100vw;
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  .posts-list {
+    position: static;
+    width: auto;
+    left: 0;
+  }
+  .post-title {
+    font-size: larger;
+    font-weight: bold;
+    text-align: center;
+  }
+  .filters {
+    position: sticky;
+    width: auto;
+    left: 0;
+    right: 0;
+    top: 20px;
+    margin: 20px;
+  }
+  .filters-title {
+    display: none;
+  }
+  .profile {
+    padding-left: 0;
+    width: 100vw;
+    flex-direction: column;
+  }
+  .profile .box {
+    width: 100vw;
+  }
+  .profile-card {
+    margin: 2em;
+    margin-top: 0;
+  }
+  .info {
+    margin: 0;
+  }
+  .info-box {
+    max-width: 100%;
+  }
+  #tile {
+    width: 100%;
+  }
+  .addDetailsPage {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+  }
+}
+
+/* @media (prefers-color-scheme: dark) {
+  :root,
+  .posts,
+  .profile,
+  #noResultsContainer,
+  #singlePostPage,
+  #qsPage,
+  #qsHeading,
+  #explorePage,
+  #channelsHeading,
+  #mostLikedPostsHeading,
+  #mostCommentedPostsHeading,
+  #mostAnsweredQueryHeading,
+  #mostAnsweredQuerySwiperSlide,
+  #initialLoading,
+  #commentBox {
+    color: #eee;
+    background-color: #222831;
+  }
+   Home.js 
+  #question,
+  .posts .card {
+    background-color: #353941;
+  }
+  .posts .card .title {
+    color: #eee;
+  }
+  .posts .card .subtitle {
+    color: #aaa;
+  }
+  .posts .card .divider {
+    background-color: dimgrey;
+  }
+  Profile.js 
+  .tile {
+    background-color: #353941;
+  }
+   Question.js
+  #question {
+    border-color: dimgrey;
+  }
+   MostLikedPost 
+   MostCommentedPost 
+  #mostLikedPostsSwiperSlide .card,
+  #mostCommentedPostsSwiperSlide .card {
+    color: lightgrey;
+    background-color: #353941;
+  }
+   HandleComment 
+  #commentBox .comment-card {
+    color: #eee;
+    background-color: #353941;
+  }
+} */

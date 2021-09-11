@@ -8,7 +8,7 @@ import { Form, Button } from "react-bootstrap";
 import { MdDelete } from "react-icons/md";
 
 /* Firebase Import */
-import { db } from "../Firebase";
+import { auth, db } from "../Firebase";
 
 /* Importing tinymce plugins, icons, themes and packages */
 import "tinymce/tinymce";
@@ -54,7 +54,7 @@ import parse from "html-react-parser";
 function PostQuery() {
   /* Initializing history */
   const history = useHistory();
-  const userId = "Q2Sl5NqZEa8SdG1G1wFA";
+  const userId = auth.currentUser.uid;
 
   const [images, setImages] = useState([]);
   const [filters, setFilters] = useState([]);
@@ -78,12 +78,12 @@ function PostQuery() {
       .onSnapshot((snapshot) => {
         setFilters(["all"]);
         setFilters((prev) => [...prev, snapshot.data().branch]);
-        snapshot.data().selectedChannels.forEach((channelID) => {
+        snapshot.data().channels.forEach((channelID) => {
           db.collection("channels")
             .doc(channelID)
             .get()
             .then((querySnapshot) => {
-              setFilters((prev) => [...prev, querySnapshot.data().label]);
+              setFilters((prev) => [...prev, querySnapshot.data().name]);
             });
         });
       });

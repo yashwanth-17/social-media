@@ -11,9 +11,9 @@ export default function ChangePassword() {
     goBack();
   }
   return (
-    <div>
+    <div className="explore">
       <Form className="container">
-        <h3 className="my-3">Change Password</h3>
+        <h3 className="py-3">Change Password</h3>
         <Form.Group>
           <Form.Label>Old Password</Form.Label>
           <Form.Control type="password" placeholder="Enter old password" />

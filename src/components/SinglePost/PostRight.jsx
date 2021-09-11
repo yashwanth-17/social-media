@@ -1,16 +1,21 @@
 import React, { useState, useEffect } from "react";
 import CommentBox from "./HandleComment";
-import { BiLike } from "react-icons/bi";
+import {
+  RiChat1Fill,
+  RiChat1Line,
+  RiThumbUpFill,
+  RiThumbUpLine,
+} from "react-icons/ri";
 import { AiTwotoneLike } from "react-icons/ai";
 import { FaRegComment, FaComment } from "react-icons/fa";
-import { BsBookmark, BsBookmarkFill } from "react-icons/bs";
+import { BsBookmark, BsBookmarkFill, BsBookmarkPlus } from "react-icons/bs";
 import Badge from "react-bootstrap/Badge";
 import firebase from "firebase";
-import { db } from "../Firebase";
+import { db, auth } from "../Firebase";
 
 function PostRight({ id }) {
   const postId = id;
-  const uid = "Q2Sl5NqZEa8SdG1G1wFA";
+  const uid = auth.currentUser.uid;
   const [like, setLike] = useState(true);
   const [likeCount, setLikeCount] = useState(1);
   const [comment, setComment] = useState(false);
@@ -94,8 +99,8 @@ function PostRight({ id }) {
         const userData = doc.data();
         const userName = userData.name;
         db.collection("posts").doc(postId).collection("comments").add({
-          uid: uid,
-          uname: userName,
+          id: uid,
+          name: userName,
           comment: current_comment,
           time: firebase.firestore.FieldValue.serverTimestamp(),
         });
@@ -125,15 +130,15 @@ function PostRight({ id }) {
         {/* Like */}
         <div className="like">
           {like ? (
-            <BiLike
-              size={30}
-              style={{ marginRight: "5px", paddingBottom: "2px" }}
+            <RiThumbUpLine
+              size={24}
+              style={{ marginRight: 5, paddingBottom: 2 }}
               onClick={handleLike}
             />
           ) : (
-            <AiTwotoneLike
-              size={30}
-              style={{ color: "#161d6f", marginRight: "5px" }}
+            <RiThumbUpFill
+              size={24}
+              style={{ color: "dodgerblue", marginRight: 5, paddingBottom: 2 }}
               onClick={handleLike}
             />
           )}
@@ -143,33 +148,37 @@ function PostRight({ id }) {
         {/* Comment */}
         <div className="comment">
           {comment ? (
-            <FaComment
-              size={28}
-              style={{ color: "#161d6f" }}
+            <RiChat1Fill
+              size={24}
+              style={{ color: "dodgerblue", marginRight: 5 }}
               onClick={handleComment}
             />
           ) : (
-            <FaRegComment size={28} onClick={handleComment} />
+            <RiChat1Line
+              size={24}
+              style={{ marginRight: 5 }}
+              onClick={handleComment}
+            />
           )}
+          Comments{" "}
           {commentCount > 0 ? (
             <Badge
               variant="primary"
-              style={{ marginRight: "10px", marginBottom: "16px" }}
+              style={{ marginRight: 10, marginBottom: 16 }}
             >
               {commentCount}
             </Badge>
           ) : null}
-          Comments
         </div>
 
         {/* Bookmark */}
         <div className="bookmark">
           {bookmark ? (
-            <BsBookmark size={28} onClick={handleBookmark} />
+            <BsBookmarkPlus size={24} onClick={handleBookmark} />
           ) : (
             <BsBookmarkFill
-              size={20}
-              style={{ color: "#161d6f", marginRight: "10px" }}
+              size={24}
+              style={{ color: "dodgerblue" }}
               onClick={handleBookmark}
             />
           )}

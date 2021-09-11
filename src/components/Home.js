@@ -1,27 +1,31 @@
-import { Col, Card, Image } from "react-bootstrap";
+import React from "react";
+import { Col, Card, Image, Button } from "react-bootstrap";
 import { RiChat1Line, RiThumbUpFill, RiThumbUpLine } from "react-icons/ri";
 import { BsBookmarkPlus, BsBookmarkCheck } from "react-icons/bs";
 import { Link, useHistory } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { db, firebase } from "./Firebase";
+import { auth, db, firebase } from "./Firebase";
 import Search from "./Qna/Search";
+import { Add, DeleteOutlined } from "@material-ui/icons";
+import DeletePostModal from "./DeletePostModal";
 
 export default function Home() {
   const history = useHistory();
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [open, setOpen] = useState(false);
+  const [pid, setPid] = useState(null);
   async function handlePostsData() {
     setLoading(true);
     db.collection("posts").onSnapshot((snap) => {
       let postsData = snap.docs.map(async (doc) => {
         let post = { id: doc.id, ...doc.data() };
-        const userDoc = await db
-          .collection("users")
-          .doc("Q2Sl5NqZEa8SdG1G1wFA")
-          .get();
+        post.comments = await getComments(post.id);
+        console.log("RESPONSE:", post);
+        const userDoc = await db.collection("users").doc(post?.postedBy).get();
         const user = userDoc.data();
         post.name = user.name;
-        post.imageUrl = user.imageUrl;
+        post.imgUrl = user.imgUrl;
         post.branch = user.branch;
         return post;
       });
@@ -34,11 +38,27 @@ export default function Home() {
 
   function getLikes(likes) {
     const isLiked =
-      likes.find((like) => like === "Il5Hjhv7RxOqjBwlB6wjWWRG3x93") !==
-      undefined;
+      likes.find((like) => like === auth.currentUser.uid) !== undefined;
     let total = likes.length + " like";
     if (likes.length !== 1) total += "s";
     return { likes: total, isLiked };
+  }
+
+  function getSaved(savedBy) {
+    const isSave =
+      savedBy.find((x) => x === auth.currentUser.uid) !== undefined;
+    return isSave;
+  }
+
+  async function getComments(postId) {
+    const snap = await db
+      .collection("posts")
+      .doc(postId)
+      .collection("comments")
+      .get();
+    let noc = snap.docs.length;
+    console.log("noc", noc);
+    return noc;
   }
 
   async function likePost(postId) {
@@ -46,9 +66,7 @@ export default function Home() {
       .collection("posts")
       .doc(postId)
       .update({
-        likes: firebase.firestore.FieldValue.arrayUnion(
-          "Il5Hjhv7RxOqjBwlB6wjWWRG3x93"
-        ),
+        likes: firebase.firestore.FieldValue.arrayUnion(auth.currentUser.uid),
       });
   }
 
@@ -57,8 +75,26 @@ export default function Home() {
       .collection("posts")
       .doc(postId)
       .update({
-        likes: firebase.firestore.FieldValue.arrayRemove(
-          "Il5Hjhv7RxOqjBwlB6wjWWRG3x93"
+        likes: firebase.firestore.FieldValue.arrayRemove(auth.currentUser.uid),
+      });
+  }
+
+  async function savePost(postId) {
+    await db
+      .collection("posts")
+      .doc(postId)
+      .update({
+        savedBy: firebase.firestore.FieldValue.arrayUnion(auth.currentUser.uid),
+      });
+  }
+
+  async function unSavePost(postId) {
+    await db
+      .collection("posts")
+      .doc(postId)
+      .update({
+        savedBy: firebase.firestore.FieldValue.arrayRemove(
+          auth.currentUser.uid
         ),
       });
   }
@@ -67,27 +103,33 @@ export default function Home() {
     history.push("/post/" + postId);
   }
 
+  function deletePost() {
+    db.collection("posts")
+      .doc(pid)
+      .delete()
+      .then(() => {
+        handleClose();
+      });
+  }
+
+  const handleClose = () => {
+    setOpen(false);
+    setPid(null);
+  };
+
   useEffect(() => {
     handlePostsData();
   }, []);
   return (
-    <div className="App" style={{ height: "100vh" }}>
-      <div className="d-flex flex" style={{ background: "#fff" }}>
-        <Col
-          className="position-absolute"
-          style={{ marginInline: 20, left: "10vw", width: "50vw" }}
-        >
-          <p
-            style={{
-              color: "grey",
-              fontSize: 14,
-              fontWeight: "bold",
-              marginTop: 20,
-              marginLeft: 10,
-            }}
-          >
-            POSTS
-          </p>
+    <div className="posts" style={{ height: "100vh" }}>
+      <DeletePostModal
+        deletePost={deletePost}
+        open={open}
+        onClose={handleClose}
+      />
+      <div id="posts-box">
+        <div className="posts-list">
+          <p className="post-title">POSTS</p>
           {/* <div className="d-flex">
                   <RiThumbUpLine size={18} className="mr-1" />{" "}
                   <small>212 likes</small>
@@ -106,17 +148,17 @@ export default function Home() {
                 role="status"
               />
             </div>
-          ) : (
+          ) : posts.length !== 0 ? (
             posts.map((post) => {
               const { likes, isLiked } = getLikes(post.likes);
               return (
-                <Card key={post.id} className="mb-3">
+                <Card key={post.id} className="card mb-3">
                   <Card.Body>
-                    <div onClick={() => viewSinglePost(post.id)}>
-                      <div className="d-flex">
+                    <div className="d-flex">
+                      <div className="d-flex" style={{ flex: 1 }}>
                         <Image
                           variant="top"
-                          src={post.imageUrl}
+                          src={post.imgUrl}
                           roundedCircle
                           width={45}
                           height={45}
@@ -133,71 +175,115 @@ export default function Home() {
                             }}
                             style={{ color: "#111" }}
                           >
-                            <Card.Title style={{ fontSize: 18 }}>
+                            <Card.Title
+                              className="title"
+                              style={{ fontSize: 18 }}
+                            >
                               {post.name}
                             </Card.Title>
                           </Link>
                           <Card.Subtitle
                             style={{ fontSize: 14 }}
-                            className="mb-2 text-muted"
+                            className="subtitle mb-2"
                           >
                             {post.branch} student
                           </Card.Subtitle>
                         </div>
                       </div>
-                      <Card.Img src={post.images[0]} className="my-3" />
+                      {post.postedBy === auth.currentUser.uid && (
+                        <DeleteOutlined
+                          className="pointer"
+                          onClick={() => {
+                            setPid(post.id);
+                            setOpen(true);
+                          }}
+                        />
+                      )}
+                    </div>
+                    <div onClick={() => viewSinglePost(post.id)}>
+                      {post.images && (
+                        <Card.Img
+                          src={post.images && post.images[0]}
+                          className="my-3"
+                        />
+                      )}
                       <Card.Text>
                         {post.description}
-                        <Card.Link href="#">read more</Card.Link>
+                        <br />
+                        <Card.Link href="#">view full post</Card.Link>
                       </Card.Text>
                     </div>
-                    <hr />
+                    <hr className="divider" />
                     <div
                       className="d-flex"
                       style={{ justifyContent: "space-evenly" }}
                     >
-                      <div className={`d-flex ${isLiked && "text-primary"}`}>
+                      <div
+                        className={`pointer d-flex ${
+                          isLiked && "text-primary post-like"
+                        }`}
+                      >
                         {isLiked ? (
                           <RiThumbUpFill
                             onClick={() => unLikePost(post.id)}
                             size={18}
-                            className="mr-1"
+                            className="pointer mr-1"
                           />
                         ) : (
                           <RiThumbUpLine
                             onClick={() => likePost(post.id)}
                             size={18}
-                            className="mr-1"
+                            className="pointer mr-1"
                           />
                         )}{" "}
                         <small>{likes}</small>
                       </div>
                       <div className="d-flex">
                         <RiChat1Line size={20} className="mr-1" />{" "}
-                        <small>1.2k comments</small>
+                        <small>{post.comments} comments</small>
                       </div>
-                      <BsBookmarkCheck size={20} color="green" />
+                      {getSaved(post.savedBy) ? (
+                        <BsBookmarkCheck
+                          className="pointer"
+                          size={20}
+                          color="green"
+                          onClick={() => unSavePost(post.id)}
+                        />
+                      ) : (
+                        <BsBookmarkPlus
+                          className="pointer"
+                          size={20}
+                          onClick={() => savePost(post.id)}
+                        />
+                      )}
                     </div>
                   </Card.Body>
                 </Card>
               );
             })
+          ) : (
+            <div>
+              <div className="text-center">
+                <p>No posts available</p>
+                <small>click below button to create a post</small>
+                <br />
+                <Button
+                  as={Link}
+                  to="/new-post"
+                  className="mt-4"
+                  variant="dark"
+                >
+                  <Add />
+                  New Post
+                </Button>
+              </div>
+            </div>
           )}
-        </Col>
-        <Col className="position-fixed" style={{ left: "75vw" }}>
-          <p
-            style={{
-              color: "grey",
-              fontSize: 14,
-              fontWeight: "bold",
-              marginTop: 20,
-              marginLeft: 10,
-            }}
-          >
-            FILTERS
-          </p>
-          <Search />
-        </Col>
+        </div>
+        <div className="filters">
+          <p className="filters-title">FILTERS</p>
+          <Search type="posts" />
+        </div>
       </div>
     </div>
   );
