@@ -1,13 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import { useHistory } from "react-router";
+import { auth } from "./Firebase";
 
 export default function ChangePassword() {
+  const [newPass, setNewPass] = useState("");
   const history = useHistory();
   function goBack() {
     history.goBack();
   }
-  function changePassword() {
+  async function changePassword() {
+    if (newPass.trim() !== "") await auth.currentUser.updatePassword(newPass);
     goBack();
   }
   return (
@@ -20,7 +23,12 @@ export default function ChangePassword() {
         </Form.Group>
         <Form.Group>
           <Form.Label>New Password</Form.Label>
-          <Form.Control type="password" placeholder="Enter new password" />
+          <Form.Control
+            type="password"
+            placeholder="Enter new password"
+            value={newPass}
+            onChange={(e) => setNewPass(e.target.value)}
+          />
         </Form.Group>
         <Form.Group>
           <Form.Label>Confirm new Password</Form.Label>

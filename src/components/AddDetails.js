@@ -18,15 +18,6 @@ export default function AddDetails() {
     const rollno = rollnoRef.current.value;
     const bio = bioRef.current.value;
     const branch = "CSE";
-    console.log({
-      name,
-      rollno,
-      branch,
-      bio,
-      interests,
-      channels,
-      imgUrl,
-    });
     db.collection("users")
       .doc(auth.currentUser.uid)
       .set({
@@ -39,7 +30,7 @@ export default function AddDetails() {
         imgUrl,
       })
       .then(() => {
-        history.goBack();
+        history.replace("/");
       });
   }
   function handleImageInput(e) {
@@ -165,7 +156,7 @@ export default function AddDetails() {
             ))}
           </div>
           <Form.Control as="select" onChange={handleGroups}>
-            <option>Trainings & Placements</option>
+            <option>Trainings & Placements 2022</option>
             <option>Coding club</option>
             <option>Tech Stack developers</option>
             <option>CSI Official</option>

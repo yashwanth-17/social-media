@@ -39,16 +39,12 @@ function NavBar() {
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="ml-auto">
-          {user?.name && (
-            <>
-              <Nav.Link as={Link} className="navItem" to="/explore">
-                Explore
-              </Nav.Link>
-              <Nav.Link as={Link} className="navItem" to="/qna">
-                QnA
-              </Nav.Link>
-            </>
-          )}
+          <Nav.Link as={Link} className="navItem" to="/explore">
+            Explore
+          </Nav.Link>
+          <Nav.Link as={Link} className="navItem" to="/qna">
+            QnA
+          </Nav.Link>
           <Nav.Link as={Link} className="navItem" to="/about">
             About Us
           </Nav.Link>
@@ -87,13 +83,13 @@ function NavBar() {
               >
                 Profile
               </NavDropdown.Item>
-              <NavDropdown.Item
+              {/* <NavDropdown.Item
                 as={Link}
                 to="/Settings"
                 style={{ textAlign: "center" }}
               >
                 Settings
-              </NavDropdown.Item>
+              </NavDropdown.Item> */}
               <NavDropdown.Item
                 as={Button}
                 style={{ textAlign: "center" }}

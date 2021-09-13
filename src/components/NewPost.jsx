@@ -14,8 +14,9 @@ export default function NewPost() {
   const history = useHistory();
   const goBack = () => history.goBack();
 
-  function addNewPost() {
-    db.collection("posts")
+  async function addNewPost() {
+    await db
+      .collection("posts")
       .add(state)
       .then(() => {
         goBack();

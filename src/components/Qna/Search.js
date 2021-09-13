@@ -22,13 +22,9 @@ function Search({ type, handleSearch, handleFilter }) {
       .doc(userId)
       .onSnapshot((snapshot) => {
         let newFilters = ["all", snapshot.data().branch];
-        snapshot.data().channels.forEach((channelID) => {
-          db.collection("channels")
-            .doc(channelID)
-            .get()
-            .then((querySnapshot) => {
-              newFilters.push(querySnapshot.data().name);
-            });
+        console.log("sd:::", snapshot.data());
+        snapshot.data().channels.forEach(async (channelID) => {
+          newFilters.push(channelID);
         });
         setFilters(newFilters);
       });
