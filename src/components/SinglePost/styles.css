@@ -72,13 +72,13 @@
   justify-content: center;
   align-items: flex-start;
 }
-.postdetails {
+/* .postdetails {
   text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-}
+} */
 .postdetails h3 {
   font-family: cursive;
   font-weight: 600;
@@ -93,6 +93,14 @@
 }
 .post_content {
   margin: 10px;
+}
+.post_content pre {
+  font-family: unset;
+  width: 800px;
+  /* overflow: hidden; */
+  word-wrap: break-word;
+  line-break: strict;
+  -ms-line-break: strict;
 }
 
 /* Model  */

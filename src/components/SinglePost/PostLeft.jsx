@@ -109,9 +109,20 @@ function PostLeft({ id }) {
             />
           )
         ) : null}
+        {postDetails.videos ? (
+          <iframe
+            width="100%"
+            height={320}
+            src={postDetails.videos[0]}
+            style={{
+              marginRight: 5,
+              marginTop: 10,
+            }}
+          ></iframe>
+        ) : null}
         <h3>{postDetails.title}</h3>
         <div className="post_content">
-          <p>{postDetails.description}</p>
+          <pre>{postDetails.description}</pre>
         </div>
       </div>
     </div>

@@ -201,17 +201,30 @@ export default function Home() {
                       )}
                     </div>
                     <div onClick={() => viewSinglePost(post.id)}>
+                      {post.videos && (
+                        <iframe
+                          width="100%"
+                          height={400}
+                          src={post.videos[0]}
+                          style={{
+                            marginRight: 5,
+                            marginTop: 10,
+                          }}
+                        ></iframe>
+                      )}
                       {post.images && (
                         <Card.Img
                           src={post.images && post.images[0]}
                           className="my-3"
                         />
                       )}
-                      <Card.Text>
+                      <Card.Text className="desc">
                         {post.description}
                         <br />
-                        <Card.Link href="#">view full post</Card.Link>
                       </Card.Text>
+                      <Card.Link as={Link} to={"/post/" + post.id}>
+                        view full post
+                      </Card.Link>
                     </div>
                     <hr className="divider" />
                     <div

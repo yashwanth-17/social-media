@@ -10,11 +10,15 @@ import RingLoader from "react-spinners/RingLoader";
 
 /* Firebase Import */
 import { db } from "../Firebase";
+import { Button } from "react-bootstrap";
+import { Add } from "@material-ui/icons";
+import { Link } from "react-router-dom";
 
 function Qna() {
   const [data, setData] = useState([]);
   const [queryData, setQueryData] = useState([]);
   const [category, setCategory] = useState("all");
+  const [loading, setLoading] = useState(false);
 
   /* function to filter the queries w.r.t to searchValue of user */
   const handleSearch = (event) => {
@@ -63,6 +67,7 @@ function Qna() {
   useEffect(() => {
     const unsubscribe = db.collection("qnas").onSnapshot((snapshot) => {
       setData([]);
+      setLoading(true);
       snapshot.docs.forEach((doc) => {
         let obj = {
           id: doc.id,
@@ -82,6 +87,7 @@ function Qna() {
               setData((prev) => [...prev, obj]);
             });
         } else setData((prev) => [...prev, obj]);
+        setLoading(false);
       });
     });
     return unsubscribe;
@@ -94,13 +100,32 @@ function Qna() {
       </h3>
       <div id="qsContainer">
         <div id="questionContainer">
-          {queryData.length === 0 ? (
-            data.length === 0 ? (
+          {queryData === [] ? (
+            loading ? (
               <div id="loading">
                 <RingLoader color="#D0021B" loading="true" size={60} />
               </div>
             ) : (
-              <NoResults />
+              // <NoResults />
+              <div id="loading">
+                <RingLoader color="#D0021B" loading="true" size={60} />
+              </div>
+              // <div>
+              //   <div className="text-center">
+              //     <p>No queries available</p>
+              //     <small>click below button to post a new query</small>
+              //     <br />
+              //     <Button
+              //       as={Link}
+              //       to="/new-post"
+              //       className="mt-4"
+              //       variant="dark"
+              //     >
+              //       <Add />
+              //       New Post
+              //     </Button>
+              //   </div>
+              // </div>
             )
           ) : (
             queryData.map((user) => {

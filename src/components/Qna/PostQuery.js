@@ -79,12 +79,7 @@ function PostQuery() {
         setFilters(["all"]);
         setFilters((prev) => [...prev, snapshot.data().branch]);
         snapshot.data().channels.forEach((channelID) => {
-          db.collection("channels")
-            .doc(channelID)
-            .get()
-            .then((querySnapshot) => {
-              setFilters((prev) => [...prev, querySnapshot.data().name]);
-            });
+          setFilters((prev) => [...prev, channelID]);
         });
       });
     return unsubscribe;

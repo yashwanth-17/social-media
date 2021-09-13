@@ -9,8 +9,10 @@ export default function NewPost() {
     images: [],
     likes: [],
     savedBy: [],
+    videos: [],
     postedBy: auth.currentUser.uid,
   });
+  const [vrl, setVrl] = useState("");
   const history = useHistory();
   const goBack = () => history.goBack();
 
@@ -35,6 +37,21 @@ export default function NewPost() {
     }
   }
 
+  function getId(url) {
+    const regExp =
+      /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+    const match = url.match(regExp);
+    const eurl =
+      "https://youtube.com/embed/" +
+      (match && match[2].length === 11 ? match[2] : null);
+    return eurl;
+  }
+
+  function handleVideoInput() {
+    setState({ ...state, videos: [...state.videos, getId(vrl)] });
+    setVrl("");
+  }
+
   return (
     <div className="explore row w-100">
       <div className="col-3" />
@@ -54,6 +71,35 @@ export default function NewPost() {
             <small>
               <br />
               no image selected
+            </small>
+          )}
+        </Form.Group>
+        <Form.Group>
+          <Form.Label>Videos</Form.Label>
+          <div className="d-flex">
+            <Form.Control
+              placeholder="Paste video url here..."
+              value={vrl}
+              onChange={(e) => setVrl(e.target.value)}
+            />
+            <Button onClick={handleVideoInput}>Add</Button>
+          </div>
+          {state.videos !== [] ? (
+            state.videos.map((url) => (
+              <iframe
+                src={url}
+                style={{
+                  width: 320,
+                  height: 180,
+                  marginRight: 5,
+                  marginTop: 10,
+                }}
+              ></iframe>
+            ))
+          ) : (
+            <small>
+              <br />
+              no video urls added
             </small>
           )}
         </Form.Group>
