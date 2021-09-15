@@ -121,9 +121,7 @@ function PostLeft({ id }) {
           ></iframe>
         ) : null}
         <h3>{postDetails.title}</h3>
-        <div className="post_content">
-          <pre>{postDetails.description}</pre>
-        </div>
+        <pre className="post_content">{postDetails.description}</pre>
       </div>
     </div>
   );

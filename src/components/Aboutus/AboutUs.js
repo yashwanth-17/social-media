@@ -1,20 +1,22 @@
-import React from 'react';
+import React from "react";
 
 function AboutUs() {
-	return (
-		<div
-			style={{
-				height: '80vh',
-				display: 'flex',
-				flexDirection: 'column',
-				justifyContent: 'center',
-				alignItems: 'center',
-			}}
-		>
-			<h1>AboutUs Page</h1>
-			<p>Contains data related to ourselves</p>
-		</div>
-	);
+  return (
+    <div className="p-3 container">
+      <h3 className="text-center">About us</h3>
+      <hr />
+      <p className="text-center">This website has been developed by</p>
+      <div className="row">
+        <div className="col-lg-5 col-3"></div>
+        <ul className="col">
+          <li>A. Naveen Kumar</li>
+          <li>K. Yashwanth Reddy</li>
+          <li>B. Navan</li>
+          <li>U. Abhinav</li>
+        </ul>
+      </div>
+    </div>
+  );
 }
 
 export default AboutUs;
