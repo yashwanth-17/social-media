@@ -72,6 +72,7 @@ function App() {
             <Switch>
               <Route path="/login" exact component={Landing} />
               <Route path="/:id" component={Landing} />
+              <Route path="/about" exact component={AboutUs} />
               <Redirect to="/login" />
             </Switch>
           )

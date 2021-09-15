@@ -9,7 +9,7 @@ import { faUserTie } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 
 function Question({ user }) {
-  console.log(user);
+  // console.log(user);
   return (
     <>
       <Card id="question">

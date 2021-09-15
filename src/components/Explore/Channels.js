@@ -53,7 +53,7 @@ function Channels() {
 
   const handleUpdate = (chipToUpdate, selected) => {
     let newSelectedChannels = [...userSelectedChannels];
-
+    console.log("nsc:::", newSelectedChannels);
     /* Loop to filter user selected channels which are not available in channels  */
     newSelectedChannels = newSelectedChannels.filter((channel) => {
       let found = false;
