@@ -212,7 +212,6 @@ function PostQuery() {
           </Button>
         </div>
       </Form>
-      {parse(contentEditor)}
     </div>
   );
 }

@@ -3,6 +3,7 @@ import AnswerForm from "./AnswerForm";
 import "./singleqna.css";
 import { GetUserDoc } from "../Firebase";
 import { Avatar } from "@material-ui/core";
+import parse from "html-react-parser";
 class Question extends Component {
   state = {
     displaydata: {
@@ -51,7 +52,7 @@ class Question extends Component {
         </div>
         <div>
           <h4>{question.query}</h4>
-          <p>{question.description}</p>
+          {parse(question.description)}
         </div>
         {/* answerform to submit an answer */}
         <AnswerForm questionid={questionid} />

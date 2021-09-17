@@ -1,6 +1,5 @@
 {
   "name": "project",
-  "homepage": "https://yashwanth-17.github.io/social-media",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

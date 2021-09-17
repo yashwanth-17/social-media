@@ -21,7 +21,7 @@ function Question({ user }) {
               ) : (
                 <img
                   id="questionProfileImage"
-                  src={user.imgUrl}
+                  src="https://www.clipartmax.com/png/middle/309-3094234_anonymous-browsing-toggle-user-secret-icon.png"
                   alt="Profile"
                 ></img>
               )}
